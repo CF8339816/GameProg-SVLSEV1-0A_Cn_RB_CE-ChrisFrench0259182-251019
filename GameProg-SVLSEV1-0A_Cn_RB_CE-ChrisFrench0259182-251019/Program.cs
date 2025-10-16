@@ -79,7 +79,18 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                     //}
 
 
-
+                    switch (grounds[x, y] + " ")
+                    {
+                        case "-": // Grass
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            break;
+                        case "~": // Water
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            break;
+                        case "^": // Mountain
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                            break;
+                    }
 
                     Console.Write(grounds[x, y] + " ");
                 }
@@ -87,22 +98,22 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
             }
 
 
-           int startIndex = 0, 6;
-            string newValue = "X";
+           //int startIndex = 0, 6;
+           // string newValue = "X";
 
           
-            grounds[startIndex] = newValue;
+           // grounds[startIndex] = newValue;
 
        
-            for (int x = 0; x < grounds.GetLength(0); x++) 
-            {
-                for (int y = 0; y < grounds.GetLength(1); y++) 
-                {
+           // for (int x = 0; x < grounds.GetLength(0); x++) 
+           // {
+           //     for (int y = 0; y < grounds.GetLength(1); y++) 
+           //     {
 
-                    Console.Write(grounds[x, y] + " ");
+           //         Console.Write(grounds[x, y] + " ");
                     
-                }
-            }
+           //     }
+           // }
         }
 
 
