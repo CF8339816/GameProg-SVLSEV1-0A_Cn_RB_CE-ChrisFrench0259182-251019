@@ -52,11 +52,11 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
         // static string water = "~";
 
         static List<(int x, int y)> Virus = new List<(int x, int y)>(); // makes new lists for array  modification
-        static List<(int x, int y)> WetVirus = new List<(int x, int y)>();
+       // static List<(int x, int y)> WetVirus = new List<(int x, int y)>();
         static Random random = new Random(); //declairs new random
-        static List<(int x, int y)> nextVirus = new List<(int x, int y)>(); //  new list  for creatioion of next movement
-        static List<(int x, int y)> nextWetVirus = new List<(int x, int y)>();
-        static List<(int x, int y)> virusMove;
+        //static List<(int x, int y)> nextVirus = new List<(int x, int y)>(); //  new list  for creatioion of next movement
+        //static List<(int x, int y)> nextWetVirus = new List<(int x, int y)>();
+        //static List<(int x, int y)> virusMove;
         static List<(int x, int y)> virus;
 
 
@@ -213,43 +213,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
 
 
         //m3
-        //static void MoveVirus()  //attempt  toseeif  it  would  work as a seperate method
-
-        //(int x, int y) newPos = virusMove(virus.x, virus.y);
-
-        //// Check if position is valid
-        //if (newPos.x == virusMove.x  && newPos.y == virusMove.y)
-        //{
-        //    Virus.Add(virus);
-        //    continue; // Virus didn't move, no chance to spawn
-        //}
-
-        //string terrain = grounds[newPos.y, newPos.x];
-
-        //if (terrain == "^") //defines mountian not passable
-        //{
-        //    Virus.Add(virus); // Add original position back
-        //}
-        //else if (terrain == "~") // defines  water , becomes wet virus
-        //{
-        //    WetVirus.Add(newPos);
-
-
-        //    if (random.Next(10) == 0)
-        //    {
-        //        nextVirus.Add(virus);
-        //    }
-        //}
-        //else // Regular move onto grass
-        //{
-        //    Virus.Add(newPos);
-
-        //    // 10% chance to spawn a new virus at the previous location
-        //    if (random.Next(10) == 0)
-        //    {
-        //        Virus.Add(Virus);
-        //    }
-        //}
+        
 
         //m4
 
