@@ -9,25 +9,32 @@ using System.Threading.Tasks;
 namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
 // aka : C# Challenge: Super Virus Land Simulation Extreme V1.0 Alpha Codename Red Blobs (((Collector's Edition)))
 {
+    //code  written  by: Chris French 0259182
+    //notes:
+    //references used:
+    // * google searches: how to change colors inan  array based on value, how to  move  around  an array randomly
+    // * books: C# players guide fifth edition -RB Whitaker, C# in a nutshell -Joseph Albahari
+    // * previous assignments
+
     internal class Program
     {
-        //variables
+        ////variables
 
-       
+
 
 
         static string[,] grounds = {
-             
+
                 { "-" ,"-" ,"~" ,"~" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"-" ,"-" ,"-" ,"-" ,"-"  },
                 { "-" ,"-" ,"~" ,"~" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"^" ,"-" ,"-" ,"-" ,"-"  },
                 { "-" ,"-" ,"~" ,"~" ,"-" ,"-" ,"-" ,"-","-" ,"^" ,"^" ,"^" ,"-" ,"-" ,"-"  },
                 { "-" ,"~" ,"~" ,"-" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"^" ,"-" ,"-" ,"-" ,"-"  },
                 { "-" ,"~" ,"~" ,"-" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"^" ,"-" ,"-" ,"-" ,"-"  },
-                { "~" ,"~" ,"-" ,"-" ,"-" ,"-" ,"-" ,"-","-" ,"^" ,"-" ,"-" ,"-" ,"-" ,"-"  },
-                { "~" ,"~" ,"-" ,"-" ,"-" ,"-" ,"-" ,"-","-" ,"^" ,"^" ,"^" ,"-" ,"-" ,"-"  },
-                { "-" ,"~" ,"~" ,"-" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"-" ,"^" ,"-" ,"-" ,"-"  },
-                { "-" ,"-" ,"~" ,"~" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"^" ,"-" ,"-" ,"-" ,"-"  },
-                { "-" ,"-" ,"~" ,"~" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"-" ,"-" ,"-" ,"-" ,"-"  },
+                { "~" ,"~" ,"-" ,"-" ,"-" ,"-" ,"-" ,"-","-" ,"^" ,"-" ,"^" ,"^" ,"^" ,"^" },
+                { "~" ,"~" ,"-" ,"-" ,"-" ,"-" ,"-" ,"-","-" ,"^" ,"^" ,"^" ,"^" ,"^","-"  },
+                { "-" ,"~" ,"~" ,"-" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"-" ,"^" ,"^" ,"^" ,"-"  },
+                { "-" ,"-" ,"~" ,"~" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"^" ,"^" ,"^","-" ,"-"  },
+                { "-" ,"-" ,"~" ,"~" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"^" ,"^" ,"^" ,"^" ,"-"  },
                 { "-" ,"-" ,"~" ,"~" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"^" ,"-" ,"-" ,"-" ,"-"  },
                 { "-" ,"-" ,"~" ,"-" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"^" ,"-" ,"-" ,"-" ,"-"  },
                 { "-" ,"~" ,"~" ,"~" ,"~" ,"-" ,"-" ,"-","-" ,"^" ,"^" ,"-" ,"-" ,"-" ,"-"  },
@@ -37,85 +44,212 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                 { "-" ,"-" ,"~" ,"~" ,"~" ,"-" ,"-" ,"-","-" ,"-" ,"-" ,"-" ,"-" ,"-" ,"-"  },
                 { "-" ,"-" ,"-" ,"-" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"-" ,"-" ,"-" ,"-" ,"-"  },
                 { "-" ,"-" ,"-" ,"-" ,"-" ,"-" ,"-" ,"-","-" ,"-" ,"-" ,"-" ,"-" ,"-" ,"-"  },
-           
+
             };
 
         // static string grass = "-";
         //static string hill = "^";
         // static string water = "~";
-        static string Virus;
+
+        static List<(int x, int y)> Virus = new List<(int x, int y)>(); // makes new lists for array  modification
+        static List<(int x, int y)> WetVirus = new List<(int x, int y)>();
+        static Random random = new Random(); //declairs new random
+        static List<(int x, int y)> nextVirus = new List<(int x, int y)>(); //  new list  for creatioion of next movement
+        static List<(int x, int y)> nextWetVirus = new List<(int x, int y)>();
+        static List<(int x, int y)> virusMove;
+        static List<(int x, int y)> virus;
+
+
+
+
 
 
 
         static void Main(string[] args)
+        { 
+
+            DrawMap();
+            Console.ReadKey(true);
+       
+            SpawnVirus();
+
+
+
+
+
+       }
+        //methods Below
+        //m1
+        static void DrawMap()
         {
 
+            for (int x = 0; x < grounds.GetLength(0); x++) // Rows
+            {
+                for (int y = 0; y < grounds.GetLength(1); y++) // Columns
+                {
+
+                    switch (grounds[x, y]) //creates the function to   change the colours based on  the case definetions below
+                    {
+                        case "-": // Grass
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            break;
+                        case "~": // Water
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            break;
+                        case "^": // Mountain
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                            break;
+                    }
 
 
+
+                    Console.Write(grounds[x, y] + " "); // writes the array
+                }
+                Console.WriteLine();  //skips a line 
+
+
+                Console.ForegroundColor = ConsoleColor.White; // sets colour back to white
+
+            }
+        }
+        //m2
+        static void SpawnVirus()
+        {
+            // Random randomLocation = new Random();  declairs new random
+
+            Console.Clear();
 
 
             for (int x = 0; x < grounds.GetLength(0); x++) // Rows
             {
                 for (int y = 0; y < grounds.GetLength(1); y++) // Columns
                 {
-                    // attempting to set foreground colours  for values when printing the map
-                    //foreach(string ground in grounds)
 
-                    //if (ground == grass)
+                    switch (grounds[x, y])
+                    {
+                        case "-": // Grass
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            break;
+                        case "~": // Water
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            break;
+                        case "^": // Mountain
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                            break;
+                    }
+
+                    Virus.Add((5, 5));
+                    Virus.Add((15, 10));
+                    Virus.Add((1, 13));
+
+                    bool isVirus = false;
+                    foreach (var virus in Virus)
+                    {
+                        if ((virus.x == x && virus.y == y))
+                        {
+                            if (virus.x == x && virus.y == y)
+                            {
+                                isVirus = true;
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("X");
+                                break;
+                            }
+                        }
+                    }
+
+                    //(int x, int y) newPos = virusMove(virus.x, virus.y);
+
+                    //// Check if position is valid
+                    //if (newPos.x == virusMove.x  && newPos.y == virusMove.y)
+                    //{
+                    //    Virus.Add(virus);
+                    //    continue; // Virus didn't move, no chance to spawn
+                    //}
+
+                    //string terrain = grounds[newPos.y, newPos.x];
+
+                    //if (terrain == "^") //defines mountian not passable
+                    //{
+                    //    Virus.Add(virus); // Add original position back
+                    //}
+                    //else if (terrain == "~") // defines  water , becomes wet virus
+                    //{
+                    //    WetVirus.Add(newPos);
+
+
+                    //    if (random.Next(10) == 0)
                     //    {
-                    //        Console.ForegroundColor = ConsoleColor.Green;
+                    //        nextVirus.Add(virus);
                     //    }
-                    //else if (ground == hill)
-                    //{
-                    //    Console.ForegroundColor = ConsoleColor.Gray;
                     //}
-                    //else if (ground == water)
+                    //else // Regular move onto grass
                     //{
-                    //    Console.ForegroundColor = ConsoleColor.Blue;
+                    //    Virus.Add(newPos);
+
+                    //    // 10% chance to spawn a new virus at the previous location
+                    //    if (random.Next(10) == 0)
+                    //    {
+                    //        Virus.Add(Virus);
+                    //    }
                     //}
-                    //else
-                    //{
-                    //    Console.ForegroundColor = ConsoleColor.White;
-                    //}
 
 
 
 
-                    Console.Write(grounds[x, y] + " ");
+                    Console.Write(grounds[x, y] + " "); // writes the array
+                }
+                Console.WriteLine();  //skips a line 
+
+
+               
+
+
+                Console.ResetColor(); // this works this time  it didn not in the challenge i used  it last . sweet!
                 }
                 Console.WriteLine();
             }
 
-
-           int startIndex = 0, 6;
-            string newValue = "X";
-
-          
-            grounds[startIndex] = newValue;
-
-       
-            for (int x = 0; x < grounds.GetLength(0); x++) 
-            {
-                for (int y = 0; y < grounds.GetLength(1); y++) 
-                {
-
-                    Console.Write(grounds[x, y] + " ");
-                    
-                }
-            }
         }
 
 
-
-
-        //methods Below
-        //m1
-
-        //m2
-
-
         //m3
+        //static void MoveVirus()  //attempt  toseeif  it  would  work as a seperate method
 
+        //(int x, int y) newPos = virusMove(virus.x, virus.y);
+
+        //// Check if position is valid
+        //if (newPos.x == virusMove.x  && newPos.y == virusMove.y)
+        //{
+        //    Virus.Add(virus);
+        //    continue; // Virus didn't move, no chance to spawn
+        //}
+
+        //string terrain = grounds[newPos.y, newPos.x];
+
+        //if (terrain == "^") //defines mountian not passable
+        //{
+        //    Virus.Add(virus); // Add original position back
+        //}
+        //else if (terrain == "~") // defines  water , becomes wet virus
+        //{
+        //    WetVirus.Add(newPos);
+
+
+        //    if (random.Next(10) == 0)
+        //    {
+        //        nextVirus.Add(virus);
+        //    }
+        //}
+        //else // Regular move onto grass
+        //{
+        //    Virus.Add(newPos);
+
+        //    // 10% chance to spawn a new virus at the previous location
+        //    if (random.Next(10) == 0)
+        //    {
+        //        Virus.Add(Virus);
+        //    }
+        //}
 
         //m4
 
@@ -125,14 +259,16 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
 
         //m6
 
-
         //m7
 
 
-
-
-
-
-
-    }
 }
+
+
+
+
+
+
+
+
+
