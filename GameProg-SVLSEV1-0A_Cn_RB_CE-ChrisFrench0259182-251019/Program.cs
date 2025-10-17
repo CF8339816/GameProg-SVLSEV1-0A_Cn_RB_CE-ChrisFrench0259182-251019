@@ -54,7 +54,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
         // static string water = "~";
 
         static List<(int x, int y)> Virus = new List<(int x, int y)>(); // makes new lists for array  modification
-       // static List<(int x, int y)> WetVirus = new List<(int x, int y)>();
+                                                                        // static List<(int x, int y)> WetVirus = new List<(int x, int y)>();
         static Random random = new Random(); //declairs new random
         //static List<(int x, int y)> nextVirus = new List<(int x, int y)>(); //  new list  for creatioion of next movement
         //static List<(int x, int y)> nextWetVirus = new List<(int x, int y)>();
@@ -69,13 +69,13 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
 
 
         static void Main(string[] args)
-        { 
+        {
 
             DrawMap();
             Console.ReadKey(true);
 
             spawnGrounds();
-            SpawnVirus();
+            //SpawnVirus();
 
             while (true)
             {
@@ -256,10 +256,10 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                 int newX = x;
                 int newY = y;
 
-                
+
                 var oldPosition = (x, y); // logs old position
 
-               
+
                 int direction = random.Next(4);  //random movement
                 switch (direction)
                 {
@@ -272,16 +272,16 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                 // 2. Check for boundaries
                 if (newX >= 0 && newX < mapX && newY >= 0 && newY < mapY)
                 {
-                    
-                    char terrain = grounds[newY, newX];
+
+                    string terrain = grounds[newY, newX];
                     if (terrain == "-" || terrain == "~") // moves virus on grass and water but not mountian
                     {
                         virus[i] = (newX, newY); // Update virus position
                     }
                 }
 
-               
-                
+
+
                 if (random.Next(10) == 0 && grounds[oldPosition.y, oldPosition.x] == "-")// spawns virus with a 10% chance to spawn a new virus at old position
                 {
                     newVirus.Add(oldPosition);
@@ -298,6 +298,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
 
 
     }
+}
 
 
 
