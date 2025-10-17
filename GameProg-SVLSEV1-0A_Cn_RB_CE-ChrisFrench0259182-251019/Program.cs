@@ -111,15 +111,51 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                     }
 
 
+<<<<<<< HEAD
 
                     Console.Write(grounds[x, y] + " "); // writes the array
+=======
+                    switch (grounds[x, y] + " ")
+                    {
+                        case "-": // Grass
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            break;
+                        case "~": // Water
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            break;
+                        case "^": // Mountain
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                            break;
+                    }
+
+                    Console.Write(grounds[x, y] + " ");
+>>>>>>> 2414b55e3492935ea46121fb77dca0a7180f4780
                 }
                 Console.WriteLine();  //skips a line 
 
 
+<<<<<<< HEAD
                 Console.ForegroundColor = ConsoleColor.White; // sets colour back to white
 
             }
+=======
+           //int startIndex = 0, 6;
+           // string newValue = "X";
+
+          
+           // grounds[startIndex] = newValue;
+
+       
+           // for (int x = 0; x < grounds.GetLength(0); x++) 
+           // {
+           //     for (int y = 0; y < grounds.GetLength(1); y++) 
+           //     {
+
+           //         Console.Write(grounds[x, y] + " ");
+                    
+           //     }
+           // }
+>>>>>>> 2414b55e3492935ea46121fb77dca0a7180f4780
         }
         //m2
         /*  static void SpawnVirus()
