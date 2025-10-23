@@ -155,7 +155,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                             if (virus.x == x && virus.y == y)
                             {
                                 isVirus = true;
-                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.ForegroundColor = ConsoleColor.Yellow;
                                 Console.Write("X");
                                 break;
                             }
@@ -254,7 +254,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                                     if (virus.x == x && virus.y == y)
                                     {
                                         isVirus = true;
-                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.ForegroundColor = ConsoleColor.Yellow;
                                         Console.Write("X");
                                         break;
                                     }
@@ -276,7 +276,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                                 if (virus.x == x && virus.y == y)
                                 {
                                     isVirus = true;
-                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
                                     Console.Write("X");
                                     break;
                                 }
@@ -297,7 +297,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                                 if (virus.x == x && virus.y == y)
                                 {
                                     isVirus = true;
-                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
                                     Console.Write("X");
                                     break;
                                 }
@@ -318,7 +318,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                                 if (virus.x == x && virus.y == y)
                                 {
                                     isVirus = true;
-                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.ForegroundColor = ConsoleColor.Yellow;
                                     Console.Write("X");
                                     break;
                                 }
