@@ -51,8 +51,13 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
         //static string hill = "^";
         // static string water = "~";
 
-        static List<(int x, int y)> Virus = new List<(int x, int y)>(); // makes new lists for array  modification
-                                                                        // static List<(int x, int y)> WetVirus = new List<(int x, int y)>();
+        static List<(int x, int y)> VirusA = new List<(int x, int y)>(); // makes new lists for array  modification
+        static List<(int x, int y)> VirusB = new List<(int x, int y)>();
+        static List<(int x, int y)> VirusC = new List<(int x, int y)>();
+
+
+
+        // static List<(int x, int y)> WetVirus = new List<(int x, int y)>();
         static Random random = new Random(); //declairs new random
         //static List<(int x, int y)> nextVirus = new List<(int x, int y)>(); //  new list  for creatioion of next movement
         //static List<(int x, int y)> nextWetVirus = new List<(int x, int y)>();
@@ -139,11 +144,11 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                             break;
                     }
 
-                    Virus.Add((5, 5));
-                  
+                    VirusA.Add((5, 5));
+                    grounds[5,5]= null;
 
                     bool isVirus = false;
-                    foreach (var virus in Virus)
+                    foreach (var virus in VirusA)
                     {
                         if ((virus.x == x && virus.y == y))
                         {
@@ -160,11 +165,11 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                     Console.Write(grounds[x, y] + " ");
 
                                                         
-                    Virus.Add((15, 10));
-                  
+                    VirusB.Add((15, 10));
+                    grounds[15, 10] = null;
 
                     bool amVirus = false;
-                    foreach (var virus in Virus)
+                    foreach (var virus in VirusB)
                     {
                         if ((virus.x == x && virus.y == y))
                         {
@@ -180,10 +185,12 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
 
                     Console.Write(grounds[x, y] + " ");
 
-                    Virus.Add((1, 13));
+                    VirusC.Add((1, 13));
+                    grounds[1, 13] = null;
+
 
                     bool areVirus = false;
-                    foreach (var virus in Virus)
+                    foreach (var virus in VirusC)
                     {
                         if ((virus.x == x && virus.y == y))
                         {
@@ -238,7 +245,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                     bool isVirus = false;
                     {
                         Console.Clear();
-                        foreach (var virus in Virus)
+                        foreach (var virus in VirusA)
                         {
                             if (randomMove == 1)
                             {
@@ -256,11 +263,11 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                         }
 
                     }
-                    Virus.Add((x--, y));
+                    VirusA.Add((x--, y));
                     Console.Write(grounds[x, y] + " ");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
-                    foreach (var virus in Virus)
+                    foreach (var virus in VirusA)
                     {
                         if (randomMove == 2)
                         {
@@ -276,11 +283,11 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                             }
                         }
                     }
-                    Virus.Add((x++, y));
+                    VirusA.Add((x++, y));
                     Console.Write(grounds[x, y] + " ");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
-                    foreach (var virus in Virus)
+                    foreach (var virus in VirusA)
                     {
                         if (randomMove == 3)
                         {
@@ -296,11 +303,11 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                             }
                         }
                     }
-                    Virus.Add((x, y--));
+                    VirusA.Add((x, y--));
                     Console.Write(grounds[x, y] + " ");
                     Console.ForegroundColor = ConsoleColor.White;
                     Console.Clear();
-                    foreach (var virus in Virus)
+                    foreach (var virus in VirusA)
                     {
                         if (randomMove == 4)
                         {
@@ -316,7 +323,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                             }
                         }
                     }
-                    Virus.Add((x, y++));
+                    VirusA.Add((x, y++));
                     Console.Write(grounds[x, y] + " ");
                     Console.ForegroundColor = ConsoleColor.White;
                 }
