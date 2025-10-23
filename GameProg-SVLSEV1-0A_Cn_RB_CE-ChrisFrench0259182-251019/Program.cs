@@ -58,7 +58,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
         //static List<(int x, int y)> nextWetVirus = new List<(int x, int y)>();
         //static List<(int x, int y)> virusMove;
         static List<(int x, int y)> virus;
-        static Random randommove = new Random();
+        static Random randomMove = new Random();
 
 
 
@@ -72,9 +72,10 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
             Console.ReadKey(true);
 
             SpawnVirus();
+            Console.ReadKey(true);
 
-
-
+            vMove();
+           Console.ReadKey(true);
 
 
         }
@@ -103,12 +104,12 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
 
 
 
-                    Console.Write(grounds[x, y] + " "); // writes the array
+                    Console.Write(grounds[x, y] + " ");
                 }
-                Console.WriteLine();  //skips a line
+                Console.WriteLine();
 
 
-                Console.ForegroundColor = ConsoleColor.White; // sets colour back to white
+                Console.ForegroundColor = ConsoleColor.White;
 
             }
         }
@@ -139,14 +140,55 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                     }
 
                     Virus.Add((5, 5));
+                    Virus.Add((15, 10));
+                    Virus.Add((1, 13));
 
+                    bool isVirus = false;
+                    foreach (var virus in Virus)
+                    {
+                        if ((virus.x == x && virus.y == y))
+                        {
+                            if (virus.x == x && virus.y == y)
+                            {
+                                isVirus = true;
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.Write("X");
+                                break;
+                            }
+                        }
+                    }
 
-                    Console.WriteLine();
-                    Console.Clear();
                     Console.Write(grounds[x, y] + " ");
+                }
+                Console.WriteLine();
+                Console.ForegroundColor = ConsoleColor.White;
+            }
+        }
+
+        //m3
+        static void vMove()
+        {
+
+            for (int x = 0; x < grounds.GetLength(0); x++) // Rows
+            {
+                for (int y = 0; y < grounds.GetLength(1); y++) // Columns
+                {
+
+                    switch (grounds[x, y])
+                    {
+                        case "-": // Grass
+                            Console.ForegroundColor = ConsoleColor.Green;
+                            break;
+                        case "~": // Water
+                            Console.ForegroundColor = ConsoleColor.Blue;
+                            break;
+                        case "^": // Mountain
+                            Console.ForegroundColor = ConsoleColor.Gray;
+                            break;
+                    }
 
 
-                    int randomNumber = random.Next(1, 5);
+                    int randomMove = random.Next(1, 5);
                     Console.ReadKey();
 
                     Console.Write(grounds[x, y] + " ");
@@ -155,7 +197,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                     {
                         foreach (var virus in Virus)
                         {
-                            if (randomNumber == 1)
+                            if (randomMove == 1)
                             {
                                 if ((virus.x == x && virus.y == y))
                                 {
@@ -169,14 +211,15 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                                 }
                             }
                         }
-                        
+
                     }
-                        Virus.Add((x--, y));
+                    Virus.Add((x--, y));
+                    Console.Write(grounds[x, y] + " ");
+                    Console.ForegroundColor = ConsoleColor.White;
 
-
-                        foreach (var virus in Virus)
+                    foreach (var virus in Virus)
                     {
-                        if (randomNumber == 2)
+                        if (randomMove == 2)
                         {
                             if ((virus.x == x && virus.y == y))
                             {
@@ -190,12 +233,13 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                             }
                         }
                     }
-                        Virus.Add((x++,y ));
-
+                    Virus.Add((x++, y));
+                    Console.Write(grounds[x, y] + " ");
+                    Console.ForegroundColor = ConsoleColor.White;
 
                     foreach (var virus in Virus)
                     {
-                        if (randomNumber == 3)
+                        if (randomMove == 3)
                         {
                             if ((virus.x == x && virus.y == y))
                             {
@@ -210,10 +254,12 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                         }
                     }
                     Virus.Add((x, y--));
+                    Console.Write(grounds[x, y] + " ");
+                    Console.ForegroundColor = ConsoleColor.White;
 
                     foreach (var virus in Virus)
                     {
-                        if (randomNumber == 3)
+                        if (randomMove == 4)
                         {
                             if ((virus.x == x && virus.y == y))
                             {
@@ -228,96 +274,30 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                         }
                     }
                     Virus.Add((x, y++));
-
-
-
-                    Console.Write(grounds[x, y] + " "); 
+                    Console.Write(grounds[x, y] + " ");
+                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
-
-
-                Console.WriteLine(); 
-
-
-
-
-
-                Console.ResetColor(); // this works this time  it didn not in the challenge i used  it last . sweet!
+                Console.WriteLine();
             }
-           
         }
 
+
+    //m4
+
+
+    //m5
+
+
+    //m6
+
+    //m7
+
+
+        
+        
     }
-
-
-    //m3
-    //static void vMove()
-    //    {
-    //        int randomNumber = random.Next(1, 5);
-    //        Console.ReadKey();
-
-    //        bool isVirus = false;
-
-    //        foreach (var virus in Virus)
-    //        {
-    //            if (randomNumber == 1)
-    //            {
-                
-    //                Console.ForegroundColor = ConsoleColor.Red;
-    //                Console.Write("X");
-    //            }
-
-    //            if (randomNumber == 2)
-    //            {
-
-    //                Console.ForegroundColor = ConsoleColor.Red;
-    //                Console.Write("X");
-    //            }
-
-    //            if (randomNumber == 3)
-    //            {
-
-    //                Console.ForegroundColor = ConsoleColor.Red;
-    //                Console.Write("X");
-    //            }
-
-    //            if (randomNumber == 4)
-    //            {
-
-    //                Console.ForegroundColor = ConsoleColor.Red;
-    //                Console.Write("X");
-    //            }
-    //        }
-
-    //        Console.Write(grounds[x, y] + " ");
-
-
-
-    //        //m4
-    //        bool isVirus = false;
-    //        foreach (var virus in Virus)
-    //        {
-    //            if ((virus.x == x && virus.y == y))
-    //            {
-    //                if (virus.x == x && virus.y == y)
-    //                {
-    //                    isVirus = true;
-    //                    Console.ForegroundColor = ConsoleColor.Red;
-    //                    Console.Write("X");
-    //                    break;
-    //                }
-    //            }
-    //        }
-
-            //m5
-
-
-            //m6
-
-            //m7
-
-
-        }
+}
 
 
 
