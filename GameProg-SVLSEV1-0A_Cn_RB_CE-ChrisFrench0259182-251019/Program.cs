@@ -162,7 +162,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                         }
                     }
 
-                    Console.Write(grounds[x, y] + " ");
+                    //Console.Write(grounds[x, y] + " ");
 
                                                         
                     VirusB.Add((15, 10));
@@ -183,7 +183,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                         }
                     }
 
-                    Console.Write(grounds[x, y] + " ");
+                    //Console.Write(grounds[x, y] + " ");
 
                     VirusC.Add((1, 13));
                     grounds[1, 13] = null;
@@ -240,7 +240,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                     int randomMove = random.Next(1, 5);
                     Console.ReadKey();
 
-                    Console.Write(grounds[x, y] + " ");
+                    //Console.Write(grounds[x, y] + " ");
 
                     bool isVirus = false;
                     {
@@ -259,14 +259,14 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                                         break;
                                     }
                                 }
+                            VirusA.Add((x--, y));
+                            grounds[x, y] = null;
+                            Console.Clear();
+                           // Console.Write(grounds[x, y] + " ");
+                            Console.ForegroundColor = ConsoleColor.White;
                             }
                         }
-
                     }
-                    VirusA.Add((x--, y));
-                    Console.Write(grounds[x, y] + " ");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Clear();
                     foreach (var virus in VirusA)
                     {
                         if (randomMove == 2)
@@ -280,13 +280,14 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                                     Console.Write("X");
                                     break;
                                 }
+                            VirusA.Add((x++, y));
+                            grounds[x, y] = null;
+                            Console.Clear();
+                           // Console.Write(grounds[x, y] + " ");
+                            Console.ForegroundColor = ConsoleColor.White;
                             }
                         }
                     }
-                    VirusA.Add((x++, y));
-                    Console.Write(grounds[x, y] + " ");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Clear();
                     foreach (var virus in VirusA)
                     {
                         if (randomMove == 3)
@@ -300,13 +301,14 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                                     Console.Write("X");
                                     break;
                                 }
+                            VirusA.Add((x, y--));
+                            grounds[x, y] = null;
+                            Console.Clear();
+                            //Console.Write(grounds[x, y] + " ");
+                            Console.ForegroundColor = ConsoleColor.White;
                             }
                         }
                     }
-                    VirusA.Add((x, y--));
-                    Console.Write(grounds[x, y] + " ");
-                    Console.ForegroundColor = ConsoleColor.White;
-                    Console.Clear();
                     foreach (var virus in VirusA)
                     {
                         if (randomMove == 4)
@@ -320,12 +322,15 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                                     Console.Write("X");
                                     break;
                                 }
+                            VirusA.Add((x, y++));
+                            grounds[x, y] = null;
+                            Console.Clear();
+                            //Console.Write(grounds[x, y] + " ");
+                            Console.ForegroundColor = ConsoleColor.White;
                             }
                         }
                     }
-                    VirusA.Add((x, y++));
                     Console.Write(grounds[x, y] + " ");
-                    Console.ForegroundColor = ConsoleColor.White;
                 }
 
                 Console.WriteLine();
