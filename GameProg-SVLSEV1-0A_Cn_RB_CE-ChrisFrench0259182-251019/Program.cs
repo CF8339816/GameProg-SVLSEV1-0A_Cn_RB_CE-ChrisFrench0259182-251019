@@ -58,7 +58,7 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
         //static List<(int x, int y)> nextWetVirus = new List<(int x, int y)>();
         //static List<(int x, int y)> virusMove;
         static List<(int x, int y)> virus;
-
+        static Random randommove = new Random();
 
 
 
@@ -139,66 +139,104 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
                     }
 
                     Virus.Add((5, 5));
-                    Virus.Add((15, 10));
-                    Virus.Add((1, 13));
+
+
+                    Console.WriteLine();
+                    Console.Clear();
+                    Console.Write(grounds[x, y] + " ");
+
+
+                    int randomNumber = random.Next(1, 5);
+                    Console.ReadKey();
+
+                    Console.Write(grounds[x, y] + " ");
 
                     bool isVirus = false;
-                    foreach (var virus in Virus)
                     {
-                        if ((virus.x == x && virus.y == y))
+                        foreach (var virus in Virus)
                         {
-                            if (virus.x == x && virus.y == y)
+                            if (randomNumber == 1)
                             {
-                                isVirus = true;
-                                Console.ForegroundColor = ConsoleColor.Red;
-                                Console.Write("X");
-                                break;
+                                if ((virus.x == x && virus.y == y))
+                                {
+                                    if (virus.x == x && virus.y == y)
+                                    {
+                                        isVirus = true;
+                                        Console.ForegroundColor = ConsoleColor.Red;
+                                        Console.Write("X");
+                                        break;
+                                    }
+                                }
+                            }
+                        }
+                        
+                    }
+                        Virus.Add((x--, y));
+
+
+                        foreach (var virus in Virus)
+                    {
+                        if (randomNumber == 2)
+                        {
+                            if ((virus.x == x && virus.y == y))
+                            {
+                                if (virus.x == x && virus.y == y)
+                                {
+                                    isVirus = true;
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write("X");
+                                    break;
+                                }
                             }
                         }
                     }
-
-                    //(int x, int y) newPos = virusMove(virus.x, virus.y);
-
-                    //// Check if position is valid
-                    //if (newPos.x == virusMove.x  && newPos.y == virusMove.y)
-                    //{
-                    //    Virus.Add(virus);
-                    //    continue; // Virus didn't move, no chance to spawn
-                    //}
-
-                    //string terrain = grounds[newPos.y, newPos.x];
-
-                    //if (terrain == "^") //defines mountian not passable
-                    //{
-                    //    Virus.Add(virus); // Add original position back
-                    //}
-                    //else if (terrain == "~") // defines  water , becomes wet virus
-                    //{
-                    //    WetVirus.Add(newPos);
+                        Virus.Add((x++,y ));
 
 
-                    //    if (random.Next(10) == 0)
-                    //    {
-                    //        nextVirus.Add(virus);
-                    //    }
-                    //}
-                    //else // Regular move onto grass
-                    //{
-                    //    Virus.Add(newPos);
+                    foreach (var virus in Virus)
+                    {
+                        if (randomNumber == 3)
+                        {
+                            if ((virus.x == x && virus.y == y))
+                            {
+                                if (virus.x == x && virus.y == y)
+                                {
+                                    isVirus = true;
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write("X");
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    Virus.Add((x, y--));
 
-                    //    // 10% chance to spawn a new virus at the previous location
-                    //    if (random.Next(10) == 0)
-                    //    {
-                    //        Virus.Add(Virus);
-                    //    }
-                    //}
+                    foreach (var virus in Virus)
+                    {
+                        if (randomNumber == 3)
+                        {
+                            if ((virus.x == x && virus.y == y))
+                            {
+                                if (virus.x == x && virus.y == y)
+                                {
+                                    isVirus = true;
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.Write("X");
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                    Virus.Add((x, y++));
 
 
 
-
-                    Console.Write(grounds[x, y] + " "); // writes the array
+                    Console.Write(grounds[x, y] + " "); 
                 }
-                Console.WriteLine();  //skips a line
+
+
+
+                Console.WriteLine(); 
 
 
 
@@ -206,27 +244,80 @@ namespace GameProg_SVLSEV1_0A_Cn_RB_CE_ChrisFrench0259182_251019
 
                 Console.ResetColor(); // this works this time  it didn not in the challenge i used  it last . sweet!
             }
-            Console.WriteLine();
+           
         }
 
     }
 
 
     //m3
+    //static void vMove()
+    //    {
+    //        int randomNumber = random.Next(1, 5);
+    //        Console.ReadKey();
+
+    //        bool isVirus = false;
+
+    //        foreach (var virus in Virus)
+    //        {
+    //            if (randomNumber == 1)
+    //            {
+                
+    //                Console.ForegroundColor = ConsoleColor.Red;
+    //                Console.Write("X");
+    //            }
+
+    //            if (randomNumber == 2)
+    //            {
+
+    //                Console.ForegroundColor = ConsoleColor.Red;
+    //                Console.Write("X");
+    //            }
+
+    //            if (randomNumber == 3)
+    //            {
+
+    //                Console.ForegroundColor = ConsoleColor.Red;
+    //                Console.Write("X");
+    //            }
+
+    //            if (randomNumber == 4)
+    //            {
+
+    //                Console.ForegroundColor = ConsoleColor.Red;
+    //                Console.Write("X");
+    //            }
+    //        }
+
+    //        Console.Write(grounds[x, y] + " ");
 
 
-    //m4
+
+    //        //m4
+    //        bool isVirus = false;
+    //        foreach (var virus in Virus)
+    //        {
+    //            if ((virus.x == x && virus.y == y))
+    //            {
+    //                if (virus.x == x && virus.y == y)
+    //                {
+    //                    isVirus = true;
+    //                    Console.ForegroundColor = ConsoleColor.Red;
+    //                    Console.Write("X");
+    //                    break;
+    //                }
+    //            }
+    //        }
+
+            //m5
 
 
-    //m5
+            //m6
+
+            //m7
 
 
-    //m6
-
-    //m7
-
-
-}
+        }
 
 
 
